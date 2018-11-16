@@ -41,7 +41,7 @@ Create an ```Entry``` model class that will hold a title, text, and timestamp fo
 1. Add a new ```Entry``` class as an ```NSObject``` subclass
 2. Add properties for timestamp, title, and body text
 3. Add a memberwise initializer that takes parameters for each property
-    * note: Consider setting a default parameter value for timestamp.
+    * note: Consider setting a default parameter, the system date, for the value of timestamp.
 
 ### EntryController
 
