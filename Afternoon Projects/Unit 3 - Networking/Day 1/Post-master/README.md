@@ -15,7 +15,8 @@ Students who complete this project independently are able to:
 
 ## Setup
 
-* `fork` and `clone` this repository.
+* `fork` and `clone` this repository
+* Open the `Post-student.xcodeproj` in the `Post-student` folder
 
 ## Part One - Model Objects, Model Controller, URLSessionDataTask (HTTP GET method), Refresh Control
 
@@ -132,13 +133,9 @@ In the next steps you will create an instance of `URLSessionDataTask` that will 
 
         `let dataTask = URLSession.shared.dataTask(with:completionHandler:)`
         </details> 
-    * <details>
-
-        <summary> <code> Hint </code> </summary>
-
-        Don't forget to call `resume()` after creating this instance. 
+    *   ***Important:*** Don't forget to call `resume()` after creating this instance. 
         Do this by putting `dataTask.resume()` after the `let dataTask = URLSession...`'s **closing** brace.)
-        </details> 
+ 
         
 * In the closure of the `dataTask(with: URLRequest, completionHandler: ...)`, you will need to handle the results it comes back with
 
@@ -201,17 +198,19 @@ As of iOS 9, Apple is boosting security and requiring developers to use the secu
 
 At this point you should be able to pull the `Post` data from the API and decode it into a list of `Post` objects. Test this functionality with a Playground or by calling this function in your App Delegate and trying to print the results from the API to the console.
 
-_Because you will always want to fetch posts whenever the tableview appears, you will want to call `fetchPosts()` in `viewDidLoad()` of your `PostListTableViewController`. This will start the call to fetch posts and assign them to the `posts` property. (You will create this TableViewController in the next step)_
+_Because you will always want to fetch posts whenever the tableview appears, you will want to call `fetchPosts()` in `viewDidLoad()` of your `PostListViewController`. This will start the call to fetch posts and assign them to the `posts` property. (You will create this TableViewController in the next step)_
 
 ## Step Four - View Controller
 
 ### Summary
 
-Build out a View Controller with a Table View Controller to display each post as an individual cell. 
+Build out a View Controller with a Table View to display each post as an individual cell. 
 
 ### Instructions
 
 * Add a `UIViewController` as your root view controller in `Main.storyboard` and embed it in a `UINavigationController`
+
+* Add a title to the navigation item.  You can choose what title you would like to put
 
 * Add a `UITableView` to the view controller and set its constraints to fill the entire view controllers root view
 
@@ -305,7 +304,7 @@ Add a `UIRefreshControl` to the table view to support the 'pull to refresh' gest
         ```
         </details> 
 
-## Step Seven - Custom Reload Table Views Function
+## Step Seven - Custom Reload Table View Function
 
 ### Summary
 
@@ -336,12 +335,15 @@ Part One is now complete. You should be able to run the app, fetch all of the po
 ### Black Diamonds
 
 * Use a computed `.date` property, `DateComponent`s and `DateFormatter`s to display the `Post` date in the correct time zone
-* Make your table view more efficient by inserting cells for new posts instead of reloading the entire tableview
 
 ## Contributions
 
-Please refer to CONTRIBUTING.md.
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
 
 ## Copyright
 
-© DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
+</p>
