@@ -10,7 +10,7 @@ import Foundation
 
 class PostController {
     
-    static let baseURL = URL(string: "https://dm-post.firebaseio.com/posts/")!
+    static let baseURL = URL(string: "https://devmtn-posts.firebaseio.com/posts/")!
     
     static let getterEndpoint = baseURL.appendingPathExtension("json")
     
