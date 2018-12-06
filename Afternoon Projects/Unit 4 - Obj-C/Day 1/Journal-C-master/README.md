@@ -1,22 +1,28 @@
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250" align="right">
+
+
 # Journal-C
 
-### Level 1
+##  Summary
 
-Students will build a simple Journal app to practice MVC separation, protocols, master-detail interfaces, table views, and persistence. 
+Students will build a simple Journal app to practice MVC separation, protocols, master-detail interfaces, table views, and persistence using Objective-C instead of Swift. 
 
-Journal is an excellent app to practice basic Cocoa Touch princples and design patterns. Students are encouraged to repeat building Journal regularly until the principles and patterns are internalized and the student can build Journal without a guide.
+Journal is an excellent app to practice basic Cocoa Touch princples and design patterns. Students are encouraged to repeat building Journal regularly until the principles and patterns are internalized and the student can build Journal without a guide. 
 
 Students who complete this project independently are able to:
 
-### Part One - Model Objects and Controllers
+##  Overview
+
+### Step One - Model Objects and Controllers
 
 * understand basic model-view-controller design and implementation
+* understand how `h` files and `m` files work together
 * create a custom model object with a memberwise initializer
 * understand, create, and use a shared instance
 * create a model object controller with create, read, update, delete methods
 * implement the Equatable protocol
 
-### Part Two - User Interface
+### Step Two - User Interface
 
 * implement a master-detail interface
 * implement the UITableViewDataSource protocol
@@ -25,7 +31,7 @@ Students who complete this project independently are able to:
 * understand, use, and implement the 'updateWith' pattern
 * implement 'prepareForSegue' to configure destination view controllers
 
-### Part Three - Controller Implementation
+### Step Three - Controller Implementation
 
 * add data persistence using NSUserDefaults
 * understand, use, and implement the builder methods pattern
@@ -40,12 +46,46 @@ Create an ```Entry``` model class that will hold a title, text, and timestamp fo
 
 1. Add a new ```Entry``` class as an ```NSObject``` subclass
 2. Add properties for timestamp, title, and body text
+
+    <Details>
+    <summary> Code Hint </summary>
+
+    ```objc
+    @property (nonatomic, strong) NSString *title;
+    @property (nonatomic, strong) NSString *text;
+    @property (nonatomic, strong) NSDate *timestamp;
+    ```
+    </Details>
+
+
 3. Add a memberwise initializer that takes parameters for each property
     * note: Consider setting a default parameter, the system date, for the value of timestamp.
 
+        <Details>
+        <summary> Code Hint </summary>
+
+        ```objc
+        - (instancetype)initWithTitle:(NSString *)title text:(NSString *)text timestamp:(NSDate *)timestamp
+        {
+            // Call super init
+            self = [super init];
+            if (self) {
+                _title = title;
+                _text = text;
+                _timestamp = timestamp;
+            }
+            return self;
+        }
+        ```
+        </Details>
+
+
+        
+    
+
 ### EntryController
 
-Create a model object controller called ```EntryController``` that will manage adding, reading, updating, and removing entries. We will follow the shared instance design pattern because we want one consistent source of truth for our entry objects that are held on the controller.
+Create a model  controller called ```EntryController``` that will manage adding, reading, updating, and removing entries. We will follow the shared instance design pattern because we want one consistent source of truth for our entry objects that are held on the controller.
 
 1. Add a new ```EntryController``` class as an ```NSObject``` subclass
 2. Add an entries NSArray property
@@ -55,16 +95,20 @@ Create a model object controller called ```EntryController``` that will manage a
 5. Create a sharedController property as a shared instance. 
     * note: Review the syntax for creating shared instance properties
 
-```
-+ (EntryController *)sharedInstance {
-    static EntryController *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [EntryController new];
-    });
-    return sharedInstance;
-}
-```
+    <Details>
+    <summary> Code Hint for Shared Instance </summary>
+
+    ```swift
+    + (EntryController *)sharedInstance {
+        static EntryController *sharedInstance = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedInstance = [EntryController new];
+        });
+        return sharedInstance;
+    }
+    ```
+    </Details>
 
 ### Black Diamonds
 
@@ -176,16 +220,17 @@ Our EntryController object is the source of truth for entries. We are now adding
 
 4. Call the ```- (void)saveToPersistentStorage``` any time that the list of entries is modified
 
-### Black Diamonds
+### Black Diamond
 
 * Implement the NSCoding protocol on the Entry class
 * Create a Unit test that verifies NSCoding methodality by converting an instance to and from NSData
 * Refactor persistence to work natively with Entry objects
 
-## Contributions
-
-Please refer to CONTRIBUTING.md.
 
 ## Copyright
 
-© DevMountain LLC, 2015. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
+</p>
