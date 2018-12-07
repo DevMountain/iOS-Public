@@ -1,4 +1,4 @@
-# Post
+# Post - Part One
 
 ## Project Summary
 
@@ -31,7 +31,7 @@ In this step, you will create your `Post` Model object, give it stored propertie
 Create a model object that will represent the `Post` objects that are listed in the feed. This model object will be generated locally, but must also be able to be initialized by decoding JSON data after "GETting" from the backend database.
 
 * Create a `Post.swift` file and define a new `Post` struct.
-* Go to a sample endpoint of the [Post API](http://devmtn-posts.firebaseio.com/posts) and see what JSON (information) you will get back for each post.
+* Go to a sample endpoint of the [Post API](http://devmtn-posts.firebaseio.com/posts.json) and see what JSON (information) you will get back for each post.
 * Using this information, add the properties on `Post`.
     * <details>
 
@@ -179,7 +179,7 @@ In the next steps you will create an instance of `URLSessionDataTask` that will 
         `var posts = postsDictionary.compactMap({ $0.value })`
         </details> 
 
-* Next, you'll need to sort these posts by timestamp in reverse chronological order (*the newest one is first). You can do this buy calling `sort` on the `posts` array. _Look at the [documentation](https://developer.apple.com/documentation/swift/array/2296801-sort) for `sort` to help you rememer what it does.
+* Next, you'll need to sort these posts by timestamp in reverse chronological order (*the newest one is first). You can do this buy calling `sort` on the `posts` array. _Look at the [documentation](https://developer.apple.com/documentation/swift/array/2296801-sort) for `sort` to help you rememer what it does._
     * <details>
 
         <summary> <code> Code Hint </code> </summary>
@@ -327,8 +327,8 @@ It is good practice to let the user know that a network request is processing. T
 * Look up the documentation for the `isNetworkActivityIndicatorVisible` property on `UIApplication` to turn on the indicator when fetching new posts
 
 * Turn it off when the network call is complete. You should add this to the `reloadTableView` function
-    
-    * Hint: This needs to be ran on the main thread
+
+  * Hint: This needs to be ran on the main thread
 
 Part One is now complete. You should be able to run the app, fetch all of the posts from the API, and have them display in the table view. Look for bugs and fix any that you may find.
 

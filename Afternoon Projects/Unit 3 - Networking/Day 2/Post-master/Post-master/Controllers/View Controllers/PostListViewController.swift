@@ -42,6 +42,11 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // MARK: - IBActions
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        presentNewPostAlert()
+    }
+    
     // MARK: - Helper Methods
     @objc func refreshControlPulled() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -51,6 +56,48 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
                 self.refreshControl.endRefreshing()
             }
         }
+    }
+    
+    // New Post Alert Controller
+    func presentNewPostAlert() {
+        let newPostAlertController = UIAlertController(title: "New Post", message: nil, preferredStyle: .alert)
+        
+        var usernameTextField = UITextField()
+        newPostAlertController.addTextField { (usernameTF) in
+            usernameTF.placeholder = "Enter username..."
+            usernameTextField = usernameTF
+        }
+        
+        var messageTextField = UITextField()
+        newPostAlertController.addTextField { (messageTF) in
+            messageTF.placeholder = "Enter message..."
+            messageTextField = messageTF
+        }
+        
+        let postAction = UIAlertAction(title: "Post", style: .default) { (postAction) in
+            guard let username = usernameTextField.text, !username.isEmpty,
+                let text = messageTextField.text, !text.isEmpty else {
+                    return
+            }
+            self.postController.addNewPostWith(username: username, text: text, completion: {
+                self.reloadTableView()
+            })
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        newPostAlertController.addAction(postAction)
+        newPostAlertController.addAction(cancelAction)
+        
+        self.present(newPostAlertController, animated: true, completion: nil)
+    }
+    
+    // Missing info error alert
+    func presentErrorAlert() {
+        let alertController = UIAlertController(title: "Missing info", message: "Make sure both text fields are filled out", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // Custom Reload Table View Function
@@ -73,11 +120,20 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         let post = postController.posts[indexPath.row]
         
         cell.textLabel?.text = post.text
-        
-        // Using post's computed date property to set the detail text - Black Diamond
-        cell.detailTextLabel?.text = post.date ?? ""
-        
+        cell.detailTextLabel?.text = "\(post.username) - " + "\(post.date ?? "")"
+
         return cell
+    }
+}
+
+extension PostListViewController {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row >= postController.posts.count - 1 {
+            postController.fetchPosts(reset: false) {
+                self.reloadTableView()
+            }
+        }
     }
 }
 

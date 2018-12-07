@@ -21,7 +21,7 @@ struct Post: Codable {
         self.timestamp = timestamp
     }
     
-    // MARK: - Computed Property: Black Diamond
+    // MARK: - Computed Property: Black Diamond Day One
     var date: String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
