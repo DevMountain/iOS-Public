@@ -88,34 +88,35 @@ Create an ```Entry``` model class that will hold a title, text, and timestamp fo
 Create a model  controller called ```EntryController``` that will manage adding, reading, updating, and removing entries. We will follow the shared instance design pattern because we want one consistent source of truth for our entry objects that are held on the controller.
 
 1. Add a new ```EntryController``` class as an ```NSObject``` subclass
-2. Add an entries NSArray property
+2. Add an ```entries``` NSArray property
 3. Create a ```- (void)addEntry:(Entry *)entry``` method that adds the entry parameter to the entries array
 4. Create a ```- (void)removeEntry:(Entry *)entry``` method that removes the entry from the entries array
     * note: Look at the ```NSArray``` documentation to find how to remove objects
-5. Create a sharedController property as a shared instance. 
+
+5. Create a ```- (void)modifyEntry:(DVMEntry *)entry
+              withTitle:(NSString *)title
+               body:(NSString *)body;``` method that modifies an existing entry
+   
+
+6. Create a sharedController property as a shared instance. 
     * note: Review the syntax for creating shared instance properties
 
-    <Details>
-    <summary> Code Hint for Shared Instance </summary>
+        <Details>
+        <summary> Code Hint for Shared Instance </summary>
 
-    ```swift
-    + (EntryController *)sharedInstance {
-        static EntryController *sharedInstance = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            sharedInstance = [EntryController new];
-        });
-        return sharedInstance;
-    }
-    ```
-    </Details>
+        ```swift
+        + (EntryController *)sharedInstance {
+            static EntryController *sharedInstance = nil;
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                sharedInstance = [EntryController new];
+            });
+            return sharedInstance;
+        }
+        ```
+        </Details>
 
-### Black Diamonds
 
-* Implement the NSCoding protocol on the Entry class
-* Create a Unit test that verifies NSCoding methodality by converting an instance to and from NSData
-
-## Part Two - User Interface
 
 ### Master List View
 
@@ -130,6 +131,22 @@ You will want this view to reload the table view each time it appears in order t
 3. Implement the UITableViewDataSource methods using the EntryController entries array
     * note: Pay attention to your ```reuseIdentifier``` in the Storyboard scene and your dequeue method call
 4. Set up your cells to display the title of the entry
+        <Details>
+        <summary> Code Hint  </summary>
+
+    ```objc
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EntryCell" forIndexPath:indexPath];
+        
+        DVMEntry *entry = [[DVMEntryController sharedController] entries][indexPath.row];
+        cell.textLabel.text = entry.title;
+        
+        return cell;
+    }
+    ```
+
+
+
 5. Implement the UITableViewDataSource ```commitEditingStyle``` methods to enable swipe to delete methodality
 6. Add a UIBarButtonItem to the UINavigationBar with the plus symbol
     * note: Select 'Add' in the System Item menu from the Identity Inspector to set the button as a plus symbol, these are system bar button items, and include localization and other benefits
@@ -138,10 +155,12 @@ You will want this view to reload the table view each time it appears in order t
 
 Build a view that provides editing and view methodality for a single entry. You will use a UITextField to capture the title, a UITextView to capture the body, a UIButton to save, and a UIButton to clear the title and body text areas.
 
-Your Detail View should follow the 'updateWith' pattern for updating the view elements with the details of a model object. To follow this pattern, the developer adds an 'updateWith' method that takes a model object. The method updates the view with details from the model object.
+Your Detail View should follow the 'updateWith' pattern for updating the view elements with the details of a model object. To follow this pattern, the developer adds an 'updateViews' method. The method updates the view with details from the model object.
 
-1. Add an 'updateWith' method that takes a model object as a parameter (in this case, an Entry)
-2. Implement the 'updateWith' methods to update all view elements that reflect details about the model object (in this case, the titleTextField and bodyTextView)
+Inside your Detail View's `h` file, create an `Entry` object that will act as a 'landing pad', and when it's set the views will update with that entries property.
+
+1. Add an 'updateViews' method that takes no parameters
+2. Implement the 'updateViews' methods to update all view elements that reflect details about the model object if it exists (in this case, the titleTextField and bodyTextView)
 
 This view needs to serve as a reading and editing view. You will add a UITextField to display the title (titleTextField) and a UITextView to display the body text (bodyTextView), a 'Clear' button that resets both fields, and a 'Save' button that saves the new or changed entry.
 
@@ -175,7 +194,6 @@ You will add two separate segues from the List View to the Detail View. The segu
 ### Black Diamonds
 
 * Implement UITableViewCellEditingStyles to enable swipe to delete entries on the List View
-* Update Unit and UITests to verify delete methodality
 
 
 ## Part Three - Controller Implementation

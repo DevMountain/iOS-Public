@@ -15,12 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Properties
 + (DVMEntryController *)sharedController;
-@property (nonatomic, strong, readonly) NSArray *entries;
+@property (nonatomic, strong) NSMutableArray *entries;
+
 
 // MARK: - Methods
-- (void)saveToPersistentStorage;
+//- (void)saveToPersistentStorage;
 - (void)addEntry:(DVMEntry *)entry;
 - (void)removeEntry:(DVMEntry *)entry;
+- (void)modifyEntry:(DVMEntry *)entry
+              withTitle:(NSString *)title
+               text:(NSString *)text;
 
 @end
 

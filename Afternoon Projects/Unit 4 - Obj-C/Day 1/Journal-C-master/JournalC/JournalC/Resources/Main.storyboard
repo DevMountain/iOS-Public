@@ -13,13 +13,13 @@
         <!--Entries-->
         <scene sceneID="KPo-yP-tF5">
             <objects>
-                <tableViewController id="5Eo-JT-ni4" sceneMemberID="viewController">
+                <tableViewController id="5Eo-JT-ni4" customClass="EntriesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4fD-sB-u5M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sBv-An-Gae" detailTextLabel="qH3-OF-ocR" style="IBUITableViewCellStyleSubtitle" id="JPl-Jn-IMg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EntryCell" textLabel="sBv-An-Gae" detailTextLabel="qH3-OF-ocR" style="IBUITableViewCellStyleSubtitle" id="JPl-Jn-IMg">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JPl-Jn-IMg" id="lBp-3E-1ny">
@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="466" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--Entry Detail View Controller-->
         <scene sceneID="GEN-Qa-dA0">
             <objects>
-                <viewController id="pEJ-IX-1xM" sceneMemberID="viewController">
+                <viewController id="pEJ-IX-1xM" customClass="EntryDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mi7-xr-ROp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,11 +81,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-0s-Tt8">
                                 <rect key="frame" x="189" y="824" width="36" height="30"/>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="pEJ-IX-1xM" eventType="touchUpInside" id="nuX-6g-t2L"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-s4-LIv">
                                 <rect key="frame" x="8" y="134" width="398" height="682"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Somebody once told me the world is gonna roll me
+                                <string key="text">Somebody once told me the world is gonna roll me
 I ain't the sharpest tool in the shed
 She was looking kind of dumb with her finger and her thumb
 In the shape of an "L" on her forehead
@@ -117,7 +120,7 @@ Hey now, you're an all-star, get your game on, go play
 Hey now, you're a rock star, get the show, on get paid
 And all that glitters is gold
 Only shooting stars
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -136,6 +139,17 @@ Only shooting stars
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DWs-ii-RTt"/>
                     </view>
+                    <navigationItem key="navigationItem" id="us1-J0-vqc">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fUc-cI-W2z">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="pEJ-IX-1xM" id="RY0-Il-Qj0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="bc9-s4-LIv" id="ARX-d7-7K7"/>
+                        <outlet property="titleTextField" destination="nxz-rd-eIK" id="dz6-Bw-Veu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKb-xX-uRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

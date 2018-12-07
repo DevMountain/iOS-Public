@@ -14,6 +14,8 @@
 		8118DDD221B88E2B00E7A1F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8118DDD121B88E2B00E7A1F7 /* Main.storyboard */; };
 		8118DDD621B890D600E7A1F7 /* DVMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8118DDD521B890D600E7A1F7 /* DVMEntry.m */; };
 		817F7E1A21B9A2F5002EAC42 /* DVMEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817F7E1921B9A2F5002EAC42 /* DVMEntryController.m */; };
+		81DFEC8B21BAE1F8005981E6 /* EntriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DFEC8A21BAE1F8005981E6 /* EntriesTableViewController.m */; };
+		81DFEC8F21BAE6B2005981E6 /* EntryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DFEC8E21BAE6B2005981E6 /* EntryDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		8118DDD521B890D600E7A1F7 /* DVMEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVMEntry.m; sourceTree = "<group>"; };
 		817F7E1821B9A2F5002EAC42 /* DVMEntryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DVMEntryController.h; sourceTree = "<group>"; };
 		817F7E1921B9A2F5002EAC42 /* DVMEntryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVMEntryController.m; sourceTree = "<group>"; };
+		81DFEC8921BAE1F8005981E6 /* EntriesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntriesTableViewController.h; sourceTree = "<group>"; };
+		81DFEC8A21BAE1F8005981E6 /* EntriesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntriesTableViewController.m; sourceTree = "<group>"; };
+		81DFEC8D21BAE6B2005981E6 /* EntryDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntryDetailViewController.h; sourceTree = "<group>"; };
+		81DFEC8E21BAE6B2005981E6 /* EntryDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntryDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		8118DDBA21B88BD800E7A1F7 /* JournalC */ = {
 			isa = PBXGroup;
 			children = (
+				81DFEC8C21BAE206005981E6 /* ViewControllers */,
 				817F7E1B21B9A2FE002EAC42 /* ModelControllers */,
 				817F7E1721B9A056002EAC42 /* Models */,
 				8118DDD321B88E8A00E7A1F7 /* Resources */,
@@ -98,6 +105,17 @@
 				817F7E1921B9A2F5002EAC42 /* DVMEntryController.m */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		81DFEC8C21BAE206005981E6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				81DFEC8921BAE1F8005981E6 /* EntriesTableViewController.h */,
+				81DFEC8A21BAE1F8005981E6 /* EntriesTableViewController.m */,
+				81DFEC8D21BAE6B2005981E6 /* EntryDetailViewController.h */,
+				81DFEC8E21BAE6B2005981E6 /* EntryDetailViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,8 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DFEC8F21BAE6B2005981E6 /* EntryDetailViewController.m in Sources */,
 				817F7E1A21B9A2F5002EAC42 /* DVMEntryController.m in Sources */,
 				8118DDD621B890D600E7A1F7 /* DVMEntry.m in Sources */,
+				81DFEC8B21BAE1F8005981E6 /* EntriesTableViewController.m in Sources */,
 				8118DDCB21B88BD800E7A1F7 /* main.m in Sources */,
 				8118DDBD21B88BD800E7A1F7 /* AppDelegate.m in Sources */,
 			);
