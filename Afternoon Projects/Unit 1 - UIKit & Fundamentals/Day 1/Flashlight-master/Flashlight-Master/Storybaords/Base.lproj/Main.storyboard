@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46g-Qj-HSz">
-                                <rect key="frame" x="37.5" y="293.5" width="300" height="100"/>
+                                <rect key="frame" x="87.5" y="293.5" width="200" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="VK0-e5-Qeh"/>
+                                    <constraint firstAttribute="width" constant="200" id="VK0-e5-Qeh"/>
                                     <constraint firstAttribute="height" constant="100" id="k7h-Pb-eGO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
