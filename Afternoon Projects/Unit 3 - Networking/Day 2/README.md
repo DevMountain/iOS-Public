@@ -11,6 +11,10 @@ Students who complete this project independently are able to:
 
 ## Part Two - Alert Controllers, URLSessionDataTask (HTTP POST method), Paging Requests
 
+### Setup
+
+Open your POST day 1 project and we will continue to build off that project.
+
 ## Step One - Add Posting Functionality to the PostController
 
 ### Summary
