@@ -35,6 +35,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB68699C21BEEAEE00FB62AE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB68699A21BED00300FB62AE /* FlashlightViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FB68699D21BEEB0500FB62AE /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBD3DEA021BB3A32003AA47C /* AppDelegate.swift */,
+				FBD3DEA721BB3A33003AA47C /* Assets.xcassets */,
+				FBD3DEAC21BB3A33003AA47C /* Info.plist */,
+			);
+			path = "Source Files";
+			sourceTree = "<group>";
+		};
+		FB68699E21BEEB2D00FB62AE /* Storybaords */ = {
+			isa = PBXGroup;
+			children = (
+				FBD3DEA421BB3A32003AA47C /* Main.storyboard */,
+				FBD3DEA921BB3A33003AA47C /* LaunchScreen.storyboard */,
+			);
+			path = Storybaords;
+			sourceTree = "<group>";
+		};
 		FBD3DE9421BB3A32003AA47C = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +81,9 @@
 		FBD3DE9F21BB3A32003AA47C /* Flashlight-Master */ = {
 			isa = PBXGroup;
 			children = (
-				FBD3DEA021BB3A32003AA47C /* AppDelegate.swift */,
-				FBD3DEA421BB3A32003AA47C /* Main.storyboard */,
-				FB68699A21BED00300FB62AE /* FlashlightViewController.swift */,
-				FBD3DEA721BB3A33003AA47C /* Assets.xcassets */,
-				FBD3DEA921BB3A33003AA47C /* LaunchScreen.storyboard */,
-				FBD3DEAC21BB3A33003AA47C /* Info.plist */,
+				FB68699E21BEEB2D00FB62AE /* Storybaords */,
+				FB68699C21BEEAEE00FB62AE /* View Controllers */,
+				FB68699D21BEEB0500FB62AE /* Source Files */,
 			);
 			path = "Flashlight-Master";
 			sourceTree = "<group>";

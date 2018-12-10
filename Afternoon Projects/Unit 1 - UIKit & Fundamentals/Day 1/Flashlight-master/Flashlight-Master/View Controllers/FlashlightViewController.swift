@@ -21,8 +21,6 @@ class FlashlightViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
-    
     // MARK: Actions
     @IBAction func FlashlightToggleButtonTapped(_ sender: Any) {
         if isOn == true {
@@ -33,15 +31,15 @@ class FlashlightViewController: UIViewController {
             FlashlightToggleButton.setTitleColor(.white, for: .normal)
             
             isOn = false // Set the boolean to the desiered Status
-            
         } else {
             // When the button is tapped and the light is off - let's turn it on
             self.view.backgroundColor = .white
+            // We want the text to change with the flashlights state
             FlashlightToggleButton.setTitle("Turn Off", for: .normal)
             FlashlightToggleButton.setTitleColor(.black, for: .normal)
+            
             isOn = true // Set the boolean to the desiered Status
         }
-       
     }
     
 }
