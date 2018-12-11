@@ -227,11 +227,8 @@ Run the app, check for bugs, and fix any you may find.
 ### Black Diamonds
 
 * Any app that displays user submitted content is required to provide a way to report and hide content, or it will be rejected during App Review. Add reporting functionality to the project.
-* Update the user interface to cue to the user that a post is new.
 * Make your table view more efficient by inserting cells for new posts instead of reloading the entire tableview.
-* Implement streaming with web sockets.
 
-  * *Note: These blackdiamonds are not updated in the `master-blackdiamond` project yet*
 
 ## Contributions
 
