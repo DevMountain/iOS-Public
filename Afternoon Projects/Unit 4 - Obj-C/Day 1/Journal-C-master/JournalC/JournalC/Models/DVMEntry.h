@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface DVMEntry : NSObject
 
@@ -22,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
                           text:(NSString *)text
                      timestamp:(NSDate *)timestamp;
 
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
+
+// MARK: - Helpers
+- (NSDictionary *)dictionaryRepresentation;
 @end
 
-NS_ASSUME_NONNULL_END

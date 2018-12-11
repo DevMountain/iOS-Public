@@ -9,17 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "DVMEntry.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface DVMEntryController : NSObject
 
 // MARK: - Properties
 + (DVMEntryController *)sharedController;
-@property (nonatomic, strong) NSMutableArray *entries;
-
+@property (nonatomic, strong) NSMutableArray<DVMEntry*> *entries;
 
 // MARK: - Methods
-//- (void)saveToPersistentStorage;
+- (void)saveToPersistentStorage;
+- (void)loadFromPersistentStorage;
 - (void)addEntry:(DVMEntry *)entry;
 - (void)removeEntry:(DVMEntry *)entry;
 - (void)modifyEntry:(DVMEntry *)entry
@@ -28,4 +27,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+
+    
