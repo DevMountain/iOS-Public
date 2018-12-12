@@ -11,5 +11,5 @@ import Foundation
 struct Post: Codable {
     let name: String
     let reason: String
-    let cohort: String?
+    let cohort: String
 }
