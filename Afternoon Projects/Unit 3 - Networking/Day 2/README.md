@@ -226,9 +226,9 @@ Run the app, check for bugs, and fix any you may find.
 
 ### Black Diamonds
 
+* Fix the issue caused by scrolling all the way to the oldest post in the `tableView(willDisplayCell:)` function
 * Any app that displays user submitted content is required to provide a way to report and hide content, or it will be rejected during App Review. Add reporting functionality to the project.
 * Make your table view more efficient by inserting cells for new posts instead of reloading the entire tableview.
-
 
 ## Contributions
 

@@ -150,14 +150,27 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
+// MARK: - Special Thanks to Steve and Greg for fixing this pagination issue!
 extension PostListViewController {
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row >= postController.posts.count - 1 {
+        if indexPath.row >= (postController.posts.count - 1){
+            let preFetchCount = postController.posts.count
             postController.fetchPosts(reset: false) {
-                self.reloadTableView()
+                
+                let postFetchCount = self.postController.posts.count
+                
+                if preFetchCount == postFetchCount {
+                    print("\(preFetchCount)")
+                    print("\(postFetchCount)")
+                } else {
+                    self.postController.fetchPosts(reset: false) {
+                        self.reloadTableView()
+                        
+                        print("\(preFetchCount)")
+                        print("\(postFetchCount)")
+                    }
+                }
             }
         }
     }
 }
-
