@@ -11,6 +11,8 @@ class Wizard {
     let name: String
     let wand: Wand
     let trait: Trait
+    
+    // Returns a UIImage based on the trait selected.
     var houseImage: UIImage {
         var houseName = ""
         

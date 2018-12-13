@@ -18,14 +18,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         formatButton()
-        
     }
 }
 
 extension HomeViewController  {
     
+    /**
+    Updates the HomeViewController's UI elements after a wizard is created.
+     - parameter wizard: A wizard object passed in from the EnrollViewControllerDelegate protocol.
+    */
     func updateViews(for wizard: Wizard) {
         welcomeLabel.text = "Welcome \(wizard.name)!"
         yourWandLabel.text = "Your wand is \(wizard.wand.rawValue)."
@@ -39,17 +41,23 @@ extension HomeViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEnrollVC" {
             guard let destinationVC = segue.destination as? EnrollViewController else { return }
+            // Set self as the delegate of the EnrollViewController
             destinationVC.delegate = self
         }
     }
+}
+
+extension HomeViewController {
     
     func formatButton() {
         enrollButton.layer.cornerRadius = 7
     }
 }
 
+// Adopt the protocol
 extension HomeViewController: EnrollViewControllerDelegate {
     
+    // Conform to the protocol
     func wizardCreated(wizard: Wizard) {
         updateViews(for: wizard)
     }

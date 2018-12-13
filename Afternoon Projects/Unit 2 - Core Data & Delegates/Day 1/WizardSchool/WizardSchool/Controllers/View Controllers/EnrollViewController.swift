@@ -7,7 +7,13 @@
 
 import UIKit
 
+
 protocol EnrollViewControllerDelegate: class  {
+    
+    /**
+    Passes a wizard to the delegate.
+    - parameter wizard: The wizard to pass.
+    */
     func wizardCreated(wizard: Wizard)
 }
 
@@ -30,6 +36,9 @@ class EnrollViewController: UIViewController {
     
     // MARK: - Actions
     
+    /**
+    Calls on the WizardController to instantiate a wizard. Informs the delegate and passes the wizard.
+     */
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         // Unwrap the input from the user.
@@ -46,6 +55,10 @@ class EnrollViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    /**
+     Sets the selectedWand property on the EnrollViewController based on the sender's restoration identifier.
+     - parameter sender: The button tapped.
+    */
     @IBAction func wandButtonTapped(_ sender: UIButton) {
         
         if let selectedWandButton = selectedWandButton {
@@ -73,6 +86,10 @@ class EnrollViewController: UIViewController {
         self.selectedWandButton = sender
     }
     
+    /**
+     Sets the selectedTrait property on the EnrollViewController based on the sender's restoration identifier.
+     - parameter sender: The button tapped.
+     */
     @IBAction func traitButtonTapped(_ sender: UIButton) {
         
         if let selectedTraitButton = selectedTraitButton {
@@ -102,6 +119,10 @@ class EnrollViewController: UIViewController {
 
 extension EnrollViewController {
     
+    /**
+     Inverts the button's background/text color.
+     - parameter button:
+     */
     func inverseColor(for button: UIButton) {
         let backgroundColor = button.backgroundColor
         let fontColor = button.titleLabel?.textColor
@@ -111,6 +132,9 @@ extension EnrollViewController {
         print("break")
     }
     
+    /**
+     Formats each button in the buttons outlet collection on EnrollViewController.
+     */
     func formatButtons() {
         for button in buttons {
             button.layer.cornerRadius = 10
