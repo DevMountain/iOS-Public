@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  WizardSchool
 //
-//  Copyright © 2018 DevMtnStudent. All rights reserved.
+//  Copyright © 2018 DevMountain. All rights reserved.
 //
 
 import UIKit
@@ -20,9 +20,37 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         formatButton()
+        
+    }
+}
+
+extension HomeViewController  {
+    
+    func updateViews(for wizard: Wizard) {
+        welcomeLabel.text = "Welcome \(wizard.name)!"
+        yourWandLabel.text = "Your wand is \(wizard.wand.rawValue)."
+        houseImageView.image = wizard.houseImage
+        yourWandLabel.isHidden = false
+        yourHouseLabel.isHidden = false
+        houseImageView.isHidden = false
+        enrollButton.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEnrollVC" {
+            guard let destinationVC = segue.destination as? EnrollViewController else { return }
+            destinationVC.delegate = self
+        }
     }
     
     func formatButton() {
         enrollButton.layer.cornerRadius = 7
+    }
+}
+
+extension HomeViewController: EnrollViewControllerDelegate {
+    
+    func wizardCreated(wizard: Wizard) {
+        updateViews(for: wizard)
     }
 }

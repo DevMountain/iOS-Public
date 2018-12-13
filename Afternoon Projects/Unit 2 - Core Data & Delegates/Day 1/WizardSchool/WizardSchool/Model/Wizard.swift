@@ -5,12 +5,29 @@
 //  Copyright © 2018 DevMtnStudent. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Wizard {
     let name: String
     let wand: Wand
     let trait: Trait
+    var houseImage: UIImage {
+        var houseName = ""
+        
+        switch trait {
+        case .loyal:
+            houseName = "hufflepuff"
+        case .cunning:
+            houseName = "slytherin"
+        case .intelligent:
+            houseName = "ravenclaw"
+        case .brave:
+            houseName = "gryffindor"
+        }
+        
+        guard let houseImage = UIImage(named: houseName) else { return UIImage() }
+        return houseImage
+    }
     
     init(name: String, wand: Wand, trait: Trait) {
         self.name = name

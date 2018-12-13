@@ -7,27 +7,21 @@
 
 import UIKit
 
-protocol EnrollViewControlleDelegate: class  {
+protocol EnrollViewControllerDelegate: class  {
     func wizardCreated(wizard: Wizard)
 }
 
 class EnrollViewController: UIViewController {
-  
+    
     // MARK: - Properties
     
     var selectedTrait: Trait?
+    var selectedTraitButton: UIButton?
     var selectedWand: Wand?
-    weak var delegate: EnrollViewControlleDelegate?
-    
+    var selectedWandButton: UIButton?
+    weak var delegate: EnrollViewControllerDelegate?
     @IBOutlet weak var wizardNameTextField: UITextField!
-    @IBOutlet weak var almondButton: UIButton!
-    @IBOutlet weak var mahoganyButton: UIButton!
-    @IBOutlet weak var walnutButton: UIButton!
-    @IBOutlet weak var oakButton: UIButton!
-    @IBOutlet weak var cunningButton: UIButton!
-    @IBOutlet weak var loyalButton: UIButton!
-    @IBOutlet weak var braveButton: UIButton!
-    @IBOutlet weak var intelligentButton: UIButton!
+    @IBOutlet var buttons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +39,20 @@ class EnrollViewController: UIViewController {
             else { return }
         
         // Initialize a new Wizard
-        let wizard = WizardController.enroll(name: wizardName, wand: wand, trait: trait)
+        let wizard = WizardController.enroll(name: wizardName, with: wand, and: trait)
         
         // Call our delegate function to inform the parent that a wizard was created
         delegate?.wizardCreated(wizard: wizard)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func wandButtonTapped(_ sender: UIButton) {
+        
+        if let selectedWandButton = selectedWandButton {
+            inverseColor(for: selectedWandButton)
+        }
+        
+        inverseColor(for: sender)
         var selectedWand: Wand?
         
         switch sender.restorationIdentifier {
@@ -69,9 +70,17 @@ class EnrollViewController: UIViewController {
         }
         
         self.selectedWand = selectedWand
+        self.selectedWandButton = sender
     }
     
     @IBAction func traitButtonTapped(_ sender: UIButton) {
+        
+        if let selectedTraitButton = selectedTraitButton {
+            inverseColor(for: selectedTraitButton)
+        }
+        
+        self.selectedTraitButton = sender
+        inverseColor(for: sender)
         var selectedTrait: Trait?
         
         switch sender.restorationIdentifier {
@@ -93,14 +102,20 @@ class EnrollViewController: UIViewController {
 
 extension EnrollViewController {
     
+    func inverseColor(for button: UIButton) {
+        let backgroundColor = button.backgroundColor
+        let fontColor = button.titleLabel?.textColor
+        
+        button.backgroundColor = fontColor
+        button.setTitleColor(backgroundColor, for: .normal)
+        print("break")
+    }
+    
     func formatButtons() {
-        almondButton.layer.cornerRadius = 10
-        mahoganyButton.layer.cornerRadius = 10
-        walnutButton.layer.cornerRadius = 10
-        oakButton.layer.cornerRadius = 10
-        braveButton.layer.cornerRadius = 10
-        cunningButton.layer.cornerRadius = 10
-        loyalButton.layer.cornerRadius = 10
-        intelligentButton.layer.cornerRadius = 10
+        for button in buttons {
+            button.layer.cornerRadius = 10
+            button.layer.borderColor = button.backgroundColor?.cgColor
+            button.layer.borderWidth = 2
+        }
     }
 }
