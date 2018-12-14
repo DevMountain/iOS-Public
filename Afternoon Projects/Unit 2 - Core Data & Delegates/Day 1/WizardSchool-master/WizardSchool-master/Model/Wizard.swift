@@ -1,8 +1,8 @@
 //
 //  Wizard.swift
-//  WizardSchool
+//  WizardSchool-master
 //
-//  Copyright © 2018 DevMtnStudent. All rights reserved.
+//  Copyright © 2018 DevMountain. All rights reserved.
 //
 
 import UIKit

@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		B72E18EB21B8764400A4BA6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B731D05221B088F800D399EB /* WizardSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizardSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B731D05221B088F800D399EB /* WizardSchool-master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WizardSchool-master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B731D05521B088F800D399EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B731D05A21B088F800D399EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B731D05F21B088FB00D399EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		B731D04921B088F700D399EB = {
 			isa = PBXGroup;
 			children = (
-				B731D05421B088F800D399EB /* WizardSchool */,
+				B731D05421B088F800D399EB /* WizardSchool-master */,
 				B731D05321B088F800D399EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,27 +98,27 @@
 		B731D05321B088F800D399EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B731D05221B088F800D399EB /* WizardSchool.app */,
+				B731D05221B088F800D399EB /* WizardSchool-master.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B731D05421B088F800D399EB /* WizardSchool */ = {
+		B731D05421B088F800D399EB /* WizardSchool-master */ = {
 			isa = PBXGroup;
 			children = (
 				B70F929421B5D3EF000A310F /* Model */,
 				B70F929521B5D3F4000A310F /* Controllers */,
 				B70F929821B5D416000A310F /* Resources */,
 			);
-			path = WizardSchool;
+			path = "WizardSchool-master";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B731D05121B088F700D399EB /* WizardSchool */ = {
+		B731D05121B088F700D399EB /* WizardSchool-master */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B731D06421B088FB00D399EB /* Build configuration list for PBXNativeTarget "WizardSchool" */;
+			buildConfigurationList = B731D06421B088FB00D399EB /* Build configuration list for PBXNativeTarget "WizardSchool-master" */;
 			buildPhases = (
 				B731D04E21B088F700D399EB /* Sources */,
 				B731D04F21B088F700D399EB /* Frameworks */,
@@ -128,9 +128,9 @@
 			);
 			dependencies = (
 			);
-			name = WizardSchool;
+			name = "WizardSchool-master";
 			productName = WizardSchool;
-			productReference = B731D05221B088F800D399EB /* WizardSchool.app */;
+			productReference = B731D05221B088F800D399EB /* WizardSchool-master.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -148,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B731D04D21B088F700D399EB /* Build configuration list for PBXProject "WizardSchool" */;
+			buildConfigurationList = B731D04D21B088F700D399EB /* Build configuration list for PBXProject "WizardSchool-master" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B731D05121B088F700D399EB /* WizardSchool */,
+				B731D05121B088F700D399EB /* WizardSchool-master */,
 			);
 		};
 /* End PBXProject section */
@@ -336,12 +336,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W53Z73CT67;
-				INFOPLIST_FILE = "$(SRCROOT)/WizardSchool/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WizardSchool-master/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DevMtnStudent.WizardSchool;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DevMtnStudent.WizardSchool-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -354,12 +354,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W53Z73CT67;
-				INFOPLIST_FILE = "$(SRCROOT)/WizardSchool/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WizardSchool-master/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.DevMtnStudent.WizardSchool;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DevMtnStudent.WizardSchool-master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -369,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B731D04D21B088F700D399EB /* Build configuration list for PBXProject "WizardSchool" */ = {
+		B731D04D21B088F700D399EB /* Build configuration list for PBXProject "WizardSchool-master" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B731D06221B088FB00D399EB /* Debug */,
@@ -378,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B731D06421B088FB00D399EB /* Build configuration list for PBXNativeTarget "WizardSchool" */ = {
+		B731D06421B088FB00D399EB /* Build configuration list for PBXNativeTarget "WizardSchool-master" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B731D06521B088FB00D399EB /* Debug */,
