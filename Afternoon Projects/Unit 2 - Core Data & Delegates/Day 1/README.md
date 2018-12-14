@@ -12,9 +12,9 @@ In the child:
 3) Call the your delegate's function(s) at the appropriate time; e.g. when a button is tapped  
   
 In the parent:  
-4) Adopt the delegate 
-5) Conform to the protocol
-6) Set the adopting class as the delegate    
+4) Adopt the delegate   
+5) Conform to the protocol  
+6) Set the adopting class as the delegate     
 
 ## Setup
 
@@ -83,8 +83,6 @@ We've declared a delegate protocol at this point; however, we haven't provided a
 		weak var delegate: EnrollViewControllerDelegate?
 		```
 		</details>
-
-
 
 ## Step 3 - Call your delegate's function
 
