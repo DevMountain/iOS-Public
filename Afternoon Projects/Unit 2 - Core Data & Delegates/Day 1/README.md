@@ -56,15 +56,15 @@ We will declare and define our delegate in this section. The `EnrollViewControll
 
 * Open the `EnrollViewController.swift` file
 * Declare and define your delegate protocol. At the top of the file and outside of the class, add the following:
-<details>
+	<details>
       <summary> <code> Delegate protocol declaration</code> </summary>
 
       ```swift
       protocol EnrollViewControllerDelegate: class  {
       		func wizardCreated(wizard: Wizard)
       }
-      ```
-      </details>
+      ``` 
+   </details>
       
 Let's consider the 'why' behind the code above. When the user taps on the 'Sign up' button on the `HomeViewController`, we present the `EnrollViewController`. Once the user signs up, we need a way to communicate our new `Wizard` object back to the `HomeViewController`
 so that it can populate its views; otherwise, the `HomeViewController` would have no way to access the newly created `Wizard`. Although there are a few different ways to provide access to the `Wizard` object in this scenario, a delegate method works perfectly.
