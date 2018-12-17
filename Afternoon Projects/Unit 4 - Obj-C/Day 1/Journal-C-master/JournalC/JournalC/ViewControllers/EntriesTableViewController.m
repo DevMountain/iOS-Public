@@ -25,7 +25,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"%lu", (unsigned long)[[[DVMEntryController sharedController] entries] count]);
     [self.tableView reloadData];
 }
 
@@ -42,6 +41,11 @@
     DVMEntry *entry = [[DVMEntryController sharedController] entries][indexPath.row];
     cell.textLabel.text = entry.title;
     
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:entry.timestamp];
+    
     return cell;
 }
 
@@ -50,7 +54,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         DVMEntry *entry = [[DVMEntryController sharedController] entries][indexPath.row];
         [[DVMEntryController sharedController] removeEntry:entry];
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
     }
 }
 

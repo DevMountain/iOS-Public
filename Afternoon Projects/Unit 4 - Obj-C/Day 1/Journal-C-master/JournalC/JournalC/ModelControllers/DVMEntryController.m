@@ -18,31 +18,51 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[DVMEntryController alloc] init];
-//        [sharedInstance loadFromPersistentStoreage];
+        sharedInstance.entries = [NSMutableArray new];
+        [sharedInstance loadFromPersistentStorage];
     });
     return sharedInstance;
 }
 
-- (NSMutableArray *)entries
+// MARK: - CRUD
+- (void)saveToPersistentStorage
 {
-    return [NSMutableArray new];
+    NSMutableArray *entryDictionaries = [NSMutableArray new];
+    
+    for (DVMEntry *entry in self.entries) {
+        [entryDictionaries addObject:entry.dictionaryRepresentation];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:entryDictionaries forKey:@"Entries"];
 }
 
-// MARK: - CRUD
+- (void)loadFromPersistentStorage
+{
+    NSArray *entryDictionaries = [[NSUserDefaults standardUserDefaults] objectForKey:@"Entries"];
+    for (NSDictionary *dictionary in entryDictionaries) {
+        DVMEntry *entry = [[DVMEntry new] initWithDictionary:dictionary];
+        [self addEntry:entry];
+    }
+    
+}
+
 - (void)addEntry:(DVMEntry *)entry
 {
-    [self.entries addObject:entry];    
+    [self.entries addObject:entry];
+    [self saveToPersistentStorage];
 }
 
 - (void)removeEntry:(DVMEntry *)entry
 {
     [self.entries removeObject:entry];
+    [self saveToPersistentStorage];
 }
 
 - (void)modifyEntry:(DVMEntry *)entry withTitle:(NSString *)title text:(NSString *)text
 {
     entry.title = title;
     entry.text = text;
+    [self saveToPersistentStorage];
 }
 
 @end
