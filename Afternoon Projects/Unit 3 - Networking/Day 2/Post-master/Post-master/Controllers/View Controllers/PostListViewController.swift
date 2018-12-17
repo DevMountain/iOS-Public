@@ -127,7 +127,7 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension PostListViewController {
-    
+    // This will cause an issue when you scroll all the way to the last post.  You will need to fix this for a Black Diamond Challenge
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row >= postController.posts.count - 1 {
             postController.fetchPosts(reset: false) {

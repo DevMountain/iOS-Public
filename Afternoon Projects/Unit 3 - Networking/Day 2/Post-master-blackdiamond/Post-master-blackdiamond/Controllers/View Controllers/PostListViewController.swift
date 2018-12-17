@@ -80,7 +80,12 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
                     return
             }
             self.postController.addNewPostWith(username: username, text: text, completion: {
-                self.reloadTableView()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.beginUpdates()
+                    self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    self.tableView.endUpdates()
+                }
             })
         }
         
@@ -124,16 +129,48 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
+    
+    
+    // MARK: - UITableViewDelegate Methods
+    
+    // MARK: - Black Diamond - Report Funtionality
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reportAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+            // This is where you would do something when a post gets reported.
+            // Typically you could send an email to your apps "Customer Support" and then you can handle it on the firebase backend.
+            // Optionally, you could build in logic that once a post gets reported a certain amount of times, it automatically gets hidden or deleted.  We won't do that for this project, but don't forget this option come time for Group and Capstone projects.
+        }
+        
+        reportAlertController.addAction(reportAction)
+        reportAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(reportAlertController, animated: true, completion: nil)
+    }
 }
 
+// MARK: - Special Thanks to Steve and Greg for fixing this pagination issue!
 extension PostListViewController {
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row >= postController.posts.count - 1 {
+        if indexPath.row >= (postController.posts.count - 1){
+            let preFetchCount = postController.posts.count
             postController.fetchPosts(reset: false) {
-                self.reloadTableView()
+                
+                let postFetchCount = self.postController.posts.count
+                
+                if preFetchCount == postFetchCount {
+                    print("\(preFetchCount)")
+                    print("\(postFetchCount)")
+                } else {
+                    self.postController.fetchPosts(reset: false) {
+                        self.reloadTableView()
+                        
+                        print("\(preFetchCount)")
+                        print("\(postFetchCount)")
+                    }
+                }
             }
         }
     }
 }
-

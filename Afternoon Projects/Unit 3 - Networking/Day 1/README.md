@@ -13,12 +13,12 @@ Students who complete this project independently are able to:
 * use closures to execute code when an asynchronous task is complete
 * use UIRefreshControl to reload data for a table view
 
+## Part One - Model Objects, Model Controller, URLSessionDataTask (HTTP GET method), Refresh Control
+
 ## Setup
 
-* `fork` and `clone` this repository
-* Open the `Post-student.xcodeproj` in the `Post-student` folder
-
-## Part One - Model Objects, Model Controller, URLSessionDataTask (HTTP GET method), Refresh Control
+* `fork` and `clone` this [student](https://github.com/DevMountain/iOS-Student) repository from GitHub
+* Open the `Post.xcodeproj` in the `Afternoon Projects/Unit 3 - Networking/Day 1 & 2/Post` folder
 
 ## Step One - Model Objects
 

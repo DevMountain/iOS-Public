@@ -17,15 +17,25 @@ class PostController {
     var posts: [Post] = []
     
     // MARK: URLRequest
-    func fetchPosts(reset: Bool = true, completion: @escaping() -> Void) {
+    func fetchPosts(reset: Bool = true, newPost: Bool = false, completion: @escaping() -> Void) {
         
         let queryEndInterval = reset ? Date().timeIntervalSince1970: posts.last?.queryTimestamp ?? Date().timeIntervalSince1970
         
-        let urlParameters = [
-            "orderBy": "\"timestamp\"",
-            "endAt": "\(queryEndInterval)",
-            "limitToLast": "15",
+        var urlParameters: [String:String] = [:]
+        
+        if newPost {
+            urlParameters = [
+                "orderBy": "\"timestamp\"",
+                "limitToLast": "1",
             ]
+        } else {
+            urlParameters = [
+                "orderBy": "\"timestamp\"",
+                "endAt": "\(queryEndInterval)",
+                "limitToLast": "15",
+            ]
+        }
+        
         
         let queryItems = urlParameters.compactMap( { URLQueryItem(name: $0.key, value: $0.value) } )
         
@@ -59,10 +69,14 @@ class PostController {
                 let postsDictionary = try decoder.decode([String:Post].self, from: data)
                 let posts: [Post] = postsDictionary.compactMap({ $0.value })
                 let sortedPosts = posts.sorted(by: { $0.timestamp > $1.timestamp })
-                if reset {
-                    self.posts = sortedPosts
+                if newPost {
+                    self.posts.insert(sortedPosts.first!, at: 0)
                 } else {
-                    self.posts.append(contentsOf: sortedPosts)
+                    if reset {
+                        self.posts = sortedPosts
+                    } else {
+                        self.posts.append(contentsOf: sortedPosts)
+                    }
                 }
                 completion()
             } catch {
@@ -110,7 +124,7 @@ class PostController {
             
             NSLog(responseDataString)
             
-            self.fetchPosts {
+            self.fetchPosts(reset: false, newPost: true) {
                 completion()
             }
         }

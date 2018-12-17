@@ -1,9 +1,9 @@
 //
 //  Post.swift
-//  WhyiOS2
+//  whyiOS
 //
-//  Created by Jayden Garrick on 5/23/18.
-//  Copyright © 2018 Jayden Garrick. All rights reserved.
+//  Created by Eric Lanza on 12/11/18.
+//  Copyright © 2018 ETLanza. All rights reserved.
 //
 
 import Foundation

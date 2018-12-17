@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  WhyiOS
+//  whyiOS
 //
-//  Created by Karl Pfister on 6/11/18.
-//  Copyright © 2018 Karl Pfister. All rights reserved.
+//  Created by Eric Lanza on 12/11/18.
+//  Copyright © 2018 ETLanza. All rights reserved.
 //
 
 import UIKit
