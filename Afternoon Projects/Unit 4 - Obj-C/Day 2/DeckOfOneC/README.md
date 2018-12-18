@@ -25,7 +25,7 @@ Students will build a simple app to practice creating Models from JSON, initiali
 
 ### JSON 
 
-Go to `http://deckofcardsapi.com/` and read over the documentation for drawing a single card. 
+Go to `http://deckofcardsapi.com/` and read over the documentation for drawing a single card
 
 1. Once you've found the correct endpoint to acheieve the goal of our app, start analyzing the JSON, and start mapping out what types are needed to parse this into our model object.
 
