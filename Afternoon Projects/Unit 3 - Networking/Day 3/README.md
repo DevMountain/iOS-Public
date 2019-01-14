@@ -175,8 +175,7 @@ You will add an alert controller to display when the `Add` button is tapped and 
 * Use the postControllers `.postReason` method to send your data to the endpoint.
 
 * If successful, call your custom to refetch the posts and reload the table view. 
-    
-    * Make sure all UI changes are performed on the mainQueue — Talk to your mentor and make sure you are at least a 4 out of 5 before continuing. This is a very important concept to understand.
+  * Make sure all UI changes are performed on the mainQueue — Talk to your mentor and make sure you are at least a 4 out of 5 before continuing. This is a very important concept to understand.
 
 * Present the alert
 
@@ -185,7 +184,8 @@ You will add an alert controller to display when the `Add` button is tapped and 
 * Party.
 
 ## <a name='diamond'></a> Black Diamonds
-* Allow editing of the cells
+
+* Allow deleting of the cells
 * Add mock students to test deleting the cells. DO NOT DELETE OTHER STUDENTS POSTS
 * Have the reasons resize with the content
 * Sort the post by most recent

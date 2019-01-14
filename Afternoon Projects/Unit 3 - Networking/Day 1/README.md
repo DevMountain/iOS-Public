@@ -17,14 +17,14 @@ Students who complete this project independently are able to:
 
 ## Setup
 
-* `fork` and `clone` this [student](https://github.com/DevMountain/iOS-Student) repository from GitHub
+* If you haven't already, `fork` and `clone` this [student](https://github.com/DevMountain/iOS-Student) repository from GitHub
 * Open the `Post.xcodeproj` in the `Afternoon Projects/Unit 3 - Networking/Day 1 & 2/Post` folder
 
 ## Step One - Model Objects
 
 ### Summary 
 
-In this step, you will create your `Post` Model object, give it stored properties and a memberwise initializer.
+In this step, you will create your `Post` model object, give it stored properties and a memberwise initializer.
 
 ### Instructions
 
@@ -62,81 +62,82 @@ There is one more computed property you will add to the `Post` type called `quer
 
 In this step, you will create a `PostController` class. This class will contain a function that will use a `URLSessionDataTask` to fetch data and will serialize the results into `Post` objects. This class will be used by the view controllers to fetch `Post` objects through completion closures.
 
-Because you will only use one View Controller in this project, there is no reason to make this controller a singleton or shared controller. To learn more about when singletons may not be the best tool, review this article on [Singleton Abuse](https://www.objc.io/issues/13-architecture/singletons/#global-state). The key takeaway for now is that singletons aren't always the right tool for the job and you should carefully consider if it is the best pattern for accessing data in your project.
+Because you will only use one View Controller in this project, there is no reason to make this controller a singleton or shared controller. To learn more about when singletons may not be the best tool, review this article on [Singleton Abuse](https://www.objc.io/issues/13-architecture/singletons/#global-state). The key takeaway, for now, is that singletons aren't always the right tool for the job and you should carefully consider if it is the best pattern for accessing data in your project.
 
 ### Instructions
 
 * Create a `PostController` class
 
 * Add a constant `baseURL` to know the base URL for the /posts/ subdirectory. This URL will be used to build other URLs throughout the app.
-    * <details>
+  * <details>
 
-        <summary> <code> Code Hint </code> </summary>
+    <summary> <code> Code Hint </code> </summary>
 
-        `let baseURL = URL(string: "http://devmtn-posts.firebaseio.com/posts")`
-        </details> 
+    `let baseURL = URL(string: "http://devmtn-posts.firebaseio.com/posts")`
+    </details>
 
 * Add a `posts` property that will hold the `Post` objects that you pull and decode from the API.
-    * <details>
+  * <details>
 
-        <summary> <code> Hint </code> </summary>
+    <summary> <code> Hint </code> </summary>
 
-        This is your "Source of Truth"
-        </details> 
+    This is your "Source of Truth"
+    </details>
 
 * Add a method `fetchPosts` that provides a completion closure.
-    * <details>
+  * <details>
 
-        <summary> <code> Code Hint </code> </summary>
+    <summary> <code> Code Hint </code> </summary>
 
-        `func fetchPosts(completion: @escaping ()- Void) {`
-        </details> 
+    `func fetchPosts(completion: @escaping () -> Void) {`
+    </details>
 
 ## Step Three - URLSessionDataTask
 
 ### Summary 
 
-In the next steps you will create an instance of `URLSessionDataTask` that will get the data at the endpoint URL.
+In the next steps, you will create an instance of `URLSessionDataTask` that will get the data at the endpoint URL.
 
 ### Instructions
 
 * Create an unwrapped instance of the `baseURL.
 
-    * Hint: use a `guard let` statement
+  * Hint: use a `guard let` statement
 
 * Create a constant `getterEndpoint` which takes the unwrapped `baseURL` and appends a path extension of `"json"`
-    * <details>
+  * <details>
 
-        <summary> <code> Code Hint </code> </summary>
+    <summary> <code> Code Hint </code> </summary>
 
-        `let getterEndpoint = unwrappedURL.appendingPathExtension("json")`
-        </details> 
-    
+    `let getterEndpoint = unwrappedURL.appendingPathExtension("json")`
+    </details>
+
 * Create an instance of `URLRequest` and give it the `getterEndpoint`. (It's very important that you _not_ forget to set the request's httpMethod and httpBody.)
-    * The httpBody and httpMethod are used to tell the API what we are going to do with URLSessionDataTask. We will go into more detail on this later, but for now, know that "GET" is used to receive the JSON data from the API.
+  * The httpBody and httpMethod are used to tell the API what we are going to do with URLSessionDataTask. We will go into more detail on this later, but for now, know that "GET" is used to receive the JSON data from the API.
 
-    * <details>
+  * <details>
 
-        <summary> <code> Code Hint </code> </summary>
+    <summary> <code> Code Hint </code> </summary>
 
-        `var request = URLRequest(url: getterEndpoint)`
+    `var request = URLRequest(url: getterEndpoint)`
 
-        `request.httpBody = nil`
+    `request.httpBody = nil`
 
-        `request.httpMethod = "GET"`
-        </details> 
+    `request.httpMethod = "GET"`
+    </details> 
 
 * Create an instance of `URLSessionDataTask`  This method will make the network call and call the completion closer with the `Data?`, `URLResponse?` and `Error?` results.
-    * <details>
+  * <details>
 
-        <summary> <code> Code Hint </code> </summary>
+    <summary> <code> Code Hint </code> </summary>
 
-        `let dataTask = URLSession.shared.dataTask(with:completionHandler:)`
-        </details> 
-    *   ***Important:*** Don't forget to call `resume()` after creating this instance. 
+    `let dataTask = URLSession.shared.dataTas(with:completionHandler:)`
+    </details>
+
+  * ***Important:*** Don't forget to call `resume()` after creating this instance. 
         Do this by putting `dataTask.resume()` after the `let dataTask = URLSession...`'s **closing** brace.)
- 
-        
+
+
 * In the closure of the `dataTask(with: URLRequest, completionHandler: ...)`, you will need to handle the results it comes back with
 
 * Enter `request` for the `URLRequest` parameter, and then highlight the completionHandler and press your *Return* key
@@ -162,7 +163,7 @@ In the next steps you will create an instance of `URLSessionDataTask` that will 
         </details> 
 
 * Unwrap `data` if there is any.
-    * Hint: Dont forget to call `completion()` and `return` in the `else` block.
+    * Hint: Don't forget to call `completion()` and `return` in the `else` block.
 
 * Create an instance of `JSONDecoder`
 
@@ -179,7 +180,7 @@ In the next steps you will create an instance of `URLSessionDataTask` that will 
         `var posts = postsDictionary.compactMap({ $0.value })`
         </details> 
 
-* Next, you'll need to sort these posts by timestamp in reverse chronological order (*the newest one is first). You can do this buy calling `sort` on the `posts` array. _Look at the [documentation](https://developer.apple.com/documentation/swift/array/2296801-sort) for `sort` to help you rememer what it does._
+* Next, you'll need to sort these posts by timestamp in reverse chronological order (*the newest one is first). You can do this by calling `sort` on the `posts` array. _Look at the [documentation](https://developer.apple.com/documentation/swift/array/2296801-sort) for `sort` to help you remember what it does._
     * <details>
 
         <summary> <code> Code Hint </code> </summary>
@@ -194,11 +195,11 @@ In the next steps you will create an instance of `URLSessionDataTask` that will 
 As of iOS 9, Apple is boosting security and requiring developers to use the secure HTTPS protocol and require the server to use the proper TLS Certificate version. The Post API does support HTTPS but does not use the correct TLS Certificate version. So for this app, you will need to turn off the App Transport Security feature.
 
 * Open your `Info.plist` file and add a key-value pair to your Info.plist. This key-value pair should be:
-`App Transport Security Settings : [Allow Arbitrary Loads : YES].`
+`App Transport Security Settings : [Allow Arbitrary Loads: YES].`
 
-At this point you should be able to pull the `Post` data from the API and decode it into a list of `Post` objects. Test this functionality with a Playground or by calling this function in your App Delegate and trying to print the results from the API to the console.
+At this point, you should be able to pull the `Post` data from the API and decode it into a list of `Post` objects. Test this functionality with a Playground or by calling this function in your App Delegate and trying to print the results from the API to the console.
 
-_Because you will always want to fetch posts whenever the tableview appears, you will want to call `fetchPosts()` in `viewDidLoad()` of your `PostListViewController`. This will start the call to fetch posts and assign them to the `posts` property. (You will create this TableViewController in the next step)_
+_Because you will always want to fetch posts whenever the table view appears, you will want to call `fetchPosts()` in `viewDidLoad()` of your `PostListViewController`. This will start the call to fetch posts and assign them to the `posts` property. (You will create this TableViewController in the next step)_
 
 ## Step Four - View Controller
 
@@ -218,21 +219,21 @@ Build out a View Controller with a Table View to display each post as an individ
 
 * Create a `PostListViewController` file as a subclass of `UIViewController` and set the class of your root view controller scene
 
-* Drag an IBOutlet of the table view from the storyboard into the `PostListViewController`. 
-
-* Assign the `PostListViewController` as the table view's delegate and datasource
-
-    * Hint: You can do this programattically or in storyboards
-
-* Add a `postController` property to `PostListViewController` and set it to an instance of `PostController`
+* Drag an IBOutlet of the table view from the storyboard into the `PostListViewController`.
 
 * Conform the `PostListViewController` to the `UITableViewDelegate` and the `UITableViewDataSource` protocols
+
+* Assign the `PostListViewController` as the table view's delegate and data source
+
+  * Hint: You can do this programmatically or in storyboards
+
+* Add a `postController` property to `PostListViewController` and set it to an instance of `PostController`
 
 * Implement the UITableViewDataSource functions using the included `postController.posts` array
 
 * Set the `cell.textLabel` to the text, and the `cell.detailTextLabel` to the author and post date
 
-    * Note: It may also help to temporarily add the `indexPath.row` to the `cell.detailTextLabel` to quickly determine if the posts are showing up where you expect them to be
+  * Note: It may also help to temporarily add the `indexPath.row` to the `cell.detailTextLabel` to quickly determine if the posts are showing up where you expect them to be
 
 * Add the `fetchPosts` function of the post controller to `viewDidLoad`
 
@@ -259,26 +260,25 @@ Add a `UIRefreshControl` to the table view to support the 'pull to refresh' gest
 
 ### Instructions 
 
-* In your `PostListViewController` file, create a new variable called refreshControl and initilize it as a `UIRefreshControl`
+* In your `PostListViewController` file, create a new variable called refreshControl and initialize it as a `UIRefreshControl`
 
 * In `viewDidLoad`, set the table views `.refreshControl` property to the refresh control you just created in the last step.
 
 * Create a new function called `refreshControlPulled()`. Add `@objc` before the `func` for this function.
-    
-    * `@objc` is an Ojective C holdover that allows us to use some Objective C methods.  `UIRefreshControl` has an Objectvie C method to allows us to call a function when we drag to refresh the table view.
 
-     * <details>
+  * `@objc` is an Objective C holdover that allows us to use some Objective C methods.  `UIRefreshControl` has an Objective C method to allows us to call a function when we drag to refresh the table view.
 
-        <summary> <code> Code Hint </code> </summary>
+  * <details>
 
-        ```
-        @objc func refreshControlPulled() {
-        
-        }
-        ```
-        </details> 
+     <summary> <code> Code Hint </code> </summary>
 
-* Now you need to add the objc function we just created to the refresh control. To do this, you call the `.addTarget` method on the `refreshControl`. The target will be `self`, the selector will be `#selector(refreshControlPulled)` and the control event will be `.valueChanged`
+    ```swift
+    @objc func refreshControlPulled() {
+    }
+    ```
+    </details>
+
+* Now you need to add the @objc function we just created to the refresh control. To do this, you call the `.addTarget` method on the `refreshControl`. The target will be `self`, the selector will be `#selector(refreshControlPulled)` and the control event will be `.valueChanged`
 
      * <details>
 
@@ -308,11 +308,11 @@ Add a `UIRefreshControl` to the table view to support the 'pull to refresh' gest
 
 ### Summary
 
-Create a function that we'll call in several places to reload the tableview on the main thread after `fetchPosts` is called and the completion closure runs.
+Create a function that we'll call in several places to reload the table view on the main thread after `fetchPosts` is called and the completion closure runs.
 
 ### Instructions
 
-* Create a function called `reloadTableView`. In this function you will want to reload the tableview. Make sure you run this on the `main` thread.
+* Create a function called `reloadTableView`. In this function, you will want to reload the tableview. Make sure you run this on the `main` thread.
 
 * Add this function to the closure of any `fetchPosts` function called in the `PostListViewController`
 
