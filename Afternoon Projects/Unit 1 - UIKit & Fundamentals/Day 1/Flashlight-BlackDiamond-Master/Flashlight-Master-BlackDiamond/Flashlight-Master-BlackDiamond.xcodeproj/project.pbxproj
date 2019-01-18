@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		FB1FACE821F2579800587981 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FACE721F2579800587981 /* AppDelegate.swift */; };
-		FB1FACEA21F2579800587981 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FACE921F2579800587981 /* ViewController.swift */; };
 		FB1FACED21F2579800587981 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1FACEB21F2579800587981 /* Main.storyboard */; };
 		FB1FACEF21F2579900587981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1FACEE21F2579900587981 /* Assets.xcassets */; };
 		FB1FACF221F2579900587981 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1FACF021F2579900587981 /* LaunchScreen.storyboard */; };
+		FB1FACFA21F2580E00587981 /* FlashlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1FACF921F2580E00587981 /* FlashlightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FB1FACE421F2579800587981 /* Flashlight-Master-BlackDiamond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flashlight-Master-BlackDiamond.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1FACE721F2579800587981 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB1FACE921F2579800587981 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB1FACEC21F2579800587981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB1FACEE21F2579900587981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB1FACF121F2579900587981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB1FACF321F2579900587981 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB1FACF921F2580E00587981 /* FlashlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashlightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +54,38 @@
 		FB1FACE621F2579800587981 /* Flashlight-Master-BlackDiamond */ = {
 			isa = PBXGroup;
 			children = (
-				FB1FACE721F2579800587981 /* AppDelegate.swift */,
-				FB1FACE921F2579800587981 /* ViewController.swift */,
-				FB1FACEB21F2579800587981 /* Main.storyboard */,
-				FB1FACEE21F2579900587981 /* Assets.xcassets */,
-				FB1FACF021F2579900587981 /* LaunchScreen.storyboard */,
-				FB1FACF321F2579900587981 /* Info.plist */,
+				FB1FACFB21F258D700587981 /* Storyboards */,
+				FB1FACFC21F258EF00587981 /* View Controllers */,
+				FB1FACFD21F258FD00587981 /* Source Files */,
 			);
 			path = "Flashlight-Master-BlackDiamond";
+			sourceTree = "<group>";
+		};
+		FB1FACFB21F258D700587981 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FB1FACEB21F2579800587981 /* Main.storyboard */,
+				FB1FACF021F2579900587981 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FB1FACFC21F258EF00587981 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB1FACF921F2580E00587981 /* FlashlightViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FB1FACFD21F258FD00587981 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB1FACE721F2579800587981 /* AppDelegate.swift */,
+				FB1FACEE21F2579900587981 /* Assets.xcassets */,
+				FB1FACF321F2579900587981 /* Info.plist */,
+			);
+			path = "Source Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB1FACEA21F2579800587981 /* ViewController.swift in Sources */,
+				FB1FACFA21F2580E00587981 /* FlashlightViewController.swift in Sources */,
 				FB1FACE821F2579800587981 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
