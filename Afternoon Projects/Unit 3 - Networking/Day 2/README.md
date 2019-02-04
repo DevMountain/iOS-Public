@@ -35,15 +35,15 @@ Update your `PostController` to initialize a new `Post` and use an `URLSessionDa
   
     * Create an instance of `JSONEncoder`
   
-    * Call `encode(value: Encodable) throws` on your instance of the JSONEncoder, passing in the post as an argument. You will need to assign the return of this function to a constant to the `postData` variable you created in one of the previous steps. *This is a throwing function so make sure to catch the possible error.*
+    * Call `encode(value: Encodable) throws` on your instance of the JSONEncoder, passing in the post as an argument. You will need to assign the return of this function to the `postData` variable you created in one of the previous steps. *This is a throwing function so make sure to catch the possible error.*
 
   * Next, unwrap your baseURL.
 
-  * Next, create a property `postEndpoint` that will hold the unwrapped `baseURL` with a path extension appended to it. Go back and look at your sample url to see what this extension should be.
+  * Next, create a property `postEndpoint` that will hold the unwrapped `baseURL` with a path extension appended to it. Go back and look at your sample URL to see what this extension should be.
 
   * Create an instance of URLRequest and give it the `postEndpoint`.  *(DO NOT forget to set the request's httpMethod -> `"POST"` and httpBody -> `postData`)*
 
-  * As we did in the `fetchPosts()` function in Part 1, you need to create and run (`dataTask.resume()`) a `URLSessionDataTask` and handle it's results:
+  * As we did in the `fetchPosts()` function in Part 1, you need to create and run (`dataTask.resume()`) a `URLSession.shared.dataTask` and handle it's results:
 
     * Check for errors. (_See Firebase's documentation for details on catching errors from the Post API._)
 
@@ -77,7 +77,7 @@ Now that we have added a function to post data to our API, we need to allow the 
 
     * In the completion handler, be sure to call `reloadTableView()`
 
-* Write a `presentErrorAlert()` function that initializes a `UIAlertController` that says the user is missing information and should try again. Call the function if the user doesn't include include text in the `usernameTextField` or `messageTextField`
+* Write a `presentErrorAlert()` function that initializes a `UIAlertController` that says the user is missing information and should try again. Call the function if the user doesn't include text in the `usernameTextField` or `messageTextField`
 
 * Create a `Cancel` alert action, add both alert actions to the alert controller, and then present the alert controller.
 
@@ -117,11 +117,11 @@ So you must update the `fetchPosts` function to support both of these cases.
 
   * Consider how you can get the range of timestamps for the request
 
-  * Consider how many `Post` dictionaries you want returned in the request
+  * Consider how many `Post` dictionaries you want to be returned in the request
 
-  * Use a whiteboard to draw out scenarios and potential sorting and filtering mechaninisms to get the data you want
+  * Use a whiteboard to draw out scenarios and potential sorting and filtering mechanisms to get the data you want
 
-* Use the following logic to generate the URL parameters to get the desired subset of `Post` JSON. This can be complex, but think through it before using the included sample code below.
+* Use the following logic to generate the URL parameters to get the desired subset of `Post` JSON. This can be complex but think through it before using the included sample code below.
 
 * You want to order the posts in reverse chronological order.
 
@@ -162,7 +162,7 @@ So you must update the `fetchPosts` function to support both of these cases.
     ```
 
   </details>
-* Create a constant called `queryItems`. We need to flatmap over the urlParameters, turning them into `URLQueryItem`s.
+* Create a constant called `queryItems`. We need to compactMap over the urlParameters, turning them into `URLQueryItem`s.
   * <details>
 
     <summary> <code> Code </code> </summary>
@@ -174,21 +174,21 @@ So you must update the `fetchPosts` function to support both of these cases.
 
 * Create a variable called `urlComponents` of type `URLComponents`. Pass in the unwrapped `baseURL` and `true` as arguments to the initializer.
 
-* Set the `urlComonents.queryItems` to the `queryItems` we just created from the `urlParameters`.
+* Set the `urlComponents.queryItems` to the `queryItems` we just created from the `urlParameters`.
 
 * Then, create a `url` constant. Assign it the value returned from `urlComponents?.url`. *This will need to be placed inside a guard statement to unwrap it.
 
 * Lastly, modify the `getterEndpoint` to append the extension to the `url` not to the `unwrappedURL`.
 
-* Now you'll need to make changes to the code where the data has already come back from the request. Replace the `self.posts = sortedPosts` with logic that uses the `reset` parameter to to determine whether you should replace `self.posts` or append to `self.posts`.
+* Now you'll need to make changes to the code where the data has already come back from the request. Replace the `self.posts = sortedPosts` with logic that uses the `reset` parameter to determine whether you should replace `self.posts` or append to `self.posts`.
  
   * Note: If you want to reset the list, you want to replace, otherwise, you want to append. *Review the method on Array called `append(contentsOf:)`*
 
-## Step Four - Add Paging Functionality to the User Inferface
+## Step Four - Add Paging Functionality to the User Interface
 
 ### Summary
 
-Add paging functionality to the List View by adding logic that checks for when the user has scrolled to the end of the table view, and calls the updated `fetchPosts` function with the correct parameters.
+Add paging functionality to the ListView by adding logic that checks for when the user has scrolled to the end of the table view and calls the updated `fetchPosts` function with the correct parameters.
 
 ### Instructions
 
@@ -204,7 +204,7 @@ Add paging functionality to the List View by adding logic that checks for when t
 
 * If so, call the `fetchPosts` function with reset set to false
 
-* In the completion closure, reload the tableview
+* In the completion closure, reload the table view
 
 ## Step Five - Test and Refine the Paging Logic
 
@@ -227,8 +227,8 @@ Run the app, check for bugs, and fix any you may find.
 ### Black Diamonds
 
 * Fix the issue caused by scrolling all the way to the oldest post in the `tableView(willDisplayCell:)` function
-* Any app that displays user submitted content is required to provide a way to report and hide content, or it will be rejected during App Review. Add reporting functionality to the project.
-* Make your table view more efficient by inserting cells for new posts instead of reloading the entire tableview.
+* Any app that displays user-submitted content is required to provide a way to report and hide content, or it will be rejected during App Review. Add reporting functionality to the project.
+* Make your table view more efficient by inserting cells for new posts instead of reloading the entire table view.
 
 ## Contributions
 

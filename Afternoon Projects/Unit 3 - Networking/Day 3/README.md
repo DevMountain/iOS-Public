@@ -41,11 +41,11 @@ Create a Post model struct that will hold the information of a post to display t
 Create a `PostController` class.
 This class will use the URLSession to fetch data and deserialize the results into Post objects. This class will be used by the view controllers to fetch Post objects through completion closures.
 
-### Intructions
+### Instructions
 
 * The PostController should have a static constant that represents the baseURL of the API.
 
-  *  The url for whyiOS is `https://whydidyouchooseios.firebaseio.com/reasons`
+  *  The URL for whyiOS is `https://whydidyouchooseios.firebaseio.com/reasons`
 
 * Add a static function `fetchPosts(completion:….)` that allows the developer to create a dataTask to fetch the Posts data, and through a completion closure provide an array of Post objects.
 
@@ -90,9 +90,9 @@ Create a `postReason` method that will take in the required parameters and then 
   * Encode it with an instance of JSONEncoder()
   * Create your request. Use the proper `HTTPMethod`, and set your encoded data to the `HTTPBody`
   * Create your `dataTask` with your request
-  * Handle your error, and complete accordingly
-  * Handle the data, compelte acordingly
-    * Don't forget to resume the datatask
+  * Handle your error and completion accordingly
+  * Handle the data and completion accordingly
+    * Don't forget to resume the dataTask
   * Catch and handle your error
 
 
@@ -103,7 +103,7 @@ Create a `postReason` method that will take in the required parameters and then 
 We will only need one view for this application:
 ReasonTableViewController
 
-You will build a story that will display the data we return from our endpoint. You will need a UIViewController with a Table View all embeded in a NavigationController, a custom UITableViewCell, three labels, and two bar button items.
+You will build a story that will display the data we return from our endpoint. You will need a UIViewController with a Table View all embedded in a NavigationController, a custom UITableViewCell, three labels, and two bar button items.
 
 Start by building a view that will list all the students with their name, cohort, and a why they choose to build iOS apps.
 
@@ -129,11 +129,11 @@ Start by building a view that will list all the students with their name, cohort
 
 * Add a left bar button item and make it a system item `Refresh`
 
-* Add a right bar button item, set it to a `Add` item
+* Add a right bar button item, set it to an `Add` item
 
 * Create all the outlets and actions you will need in their corresponding files.
 
-* Set your table view's data source and delegate programatically
+* Set your table view's data source and delegate programmatically
 
 ## Step Five - Data Source
 
@@ -175,8 +175,7 @@ You will add an alert controller to display when the `Add` button is tapped and 
 * Use the postControllers `.postReason` method to send your data to the endpoint.
 
 * If successful, call your custom to refetch the posts and reload the table view. 
-    
-    * Make sure all UI changes are performed on the mainQueue — Talk to your mentor and make sure you are at least a 4 out of 5 before continuing. This is a very important concept to understand.
+  * Make sure all UI changes are performed on the mainQueue — Talk to your mentor and make sure you are at least a 4 out of 5 before continuing. This is a very important concept to understand.
 
 * Present the alert
 
@@ -185,10 +184,10 @@ You will add an alert controller to display when the `Add` button is tapped and 
 * Party.
 
 ## <a name='diamond'></a> Black Diamonds
-* Allow editing of the cells
+
+* Allow deleting of the cells
 * Add mock students to test deleting the cells. DO NOT DELETE OTHER STUDENTS POSTS
 * Have the reasons resize with the content
-* Sort the post by most recent
 
 ## Contributions
 
