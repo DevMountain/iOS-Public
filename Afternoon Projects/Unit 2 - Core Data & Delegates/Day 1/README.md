@@ -12,7 +12,7 @@ In the child:
 3) Call the your delegate's function(s) at the appropriate time; e.g. when a button is tapped  
   
 In the parent:  
-4) Adopt the delegate   
+4) Adopt the delegate   te
 5) Conform to the protocol  
 6) Set the adopting class as the delegate     
 
