@@ -137,7 +137,7 @@ Now that the child portion of delegate protocol has been implemented, we're read
 	
 Note: Good code organization is very important. Adopting and conforming to delegates in an extension of the conforming class is a best practice.   
 
-Notice that you are receiving an error from the compiler telling you that the `HomeViewController` does not conform to the `EnrollViewControllerDelegate` protocol. What's happening here is that the we have declared our `HomeViewController` as an `EnrollViewControllerDelegate`; however, in order to actually be an `EnrollViewControllerDelegate`, the adopting class must conform to the delegate. 
+Notice that you are receiving an error from the compiler telling you that the `HomeViewController` does not conform to the `EnrollViewControllerDelegate` protocol. What's happening here is that we have declared our `HomeViewController` as an `EnrollViewControllerDelegate`; however, in order to actually be an `EnrollViewControllerDelegate`, the adopting class must conform to the delegate. 
 
 See Step 5 to silence the compiler.
 
