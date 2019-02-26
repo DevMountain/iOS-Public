@@ -1,4 +1,3 @@
-# Flashlight Readme
 # FlashLight
 ---
 Students will build a simple Flashlight app to practice working with IBOutlets, IBActions, and UIControlEvents.
