@@ -21,7 +21,7 @@ class TaskController {
         let fetchRequest: NSFetchRequest<Task> = NSFetchRequest(entityName: "Task")
         do {
             // Return the results of the fetch request.
-           return try CoreDataStack.context.fetch(fetchRequest)
+            return try CoreDataStack.context.fetch(fetchRequest)
         } catch {
             print("There was an error fetching the Tasks: \(error)")
             return []
@@ -35,7 +35,7 @@ class TaskController {
         saveToPersistentStore()
     }
     
-    func update(_ task: Task, _ name: String, notes: String?, due: Date?) {
+    func update(_ task: Task, name: String, notes: String?, due: Date?) {
         
         // Set the tasks's properties to the parameters that were passed in
         task.name = name
@@ -53,12 +53,16 @@ class TaskController {
         saveToPersistentStore()
     }
     
+    func toggleIsComplete(for task: Task) {
+        task.isComplete = !task.isComplete
+        saveToPersistentStore()
+    }
+    
     func saveToPersistentStore() {
         do {
             try CoreDataStack.context.save()
         } catch {
             print("There was an error saving to the persistent store. \(error)")
         }
-    }
-    
+    }    
 }

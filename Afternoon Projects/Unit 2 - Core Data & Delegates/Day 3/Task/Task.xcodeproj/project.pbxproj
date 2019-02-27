@@ -47,6 +47,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B73804EA22248AB600CD9E59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B761071D22136DDD001F79B6 /* Task + Convenience.swift */,
+				B7BA6EE821F7A442004A3C70 /* Task.xcdatamodeld */,
+				B7BA6EFA21F7D585004A3C70 /* CoreDataStack.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B73804EB22248AC200CD9E59 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B73804EC22248AC800CD9E59 /* View Controllers */,
+				B73804ED22248ACF00CD9E59 /* Model Controller */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B73804EC22248AC800CD9E59 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B7BA6EF621F7D4D6004A3C70 /* TaskListTableViewController.swift */,
+				B7BA6EF821F7D502004A3C70 /* TaskDetailTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B73804ED22248ACF00CD9E59 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B73804E6221DCC8D00CD9E59 /* TaskController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		B73804EE22248B2900CD9E59 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B73804E8221F729500CD9E59 /* SwitchTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B73804EF22248B4900CD9E59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7BA6EE521F7A442004A3C70 /* Main.storyboard */,
+				B7BA6EEB21F7A446004A3C70 /* Assets.xcassets */,
+				B7BA6EED21F7A446004A3C70 /* LaunchScreen.storyboard */,
+				B7BA6EF021F7A446004A3C70 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B7BA6ED521F7A442004A3C70 = {
 			isa = PBXGroup;
 			children = (
@@ -67,17 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				B7BA6EE121F7A442004A3C70 /* AppDelegate.swift */,
-				B7BA6EFA21F7D585004A3C70 /* CoreDataStack.swift */,
-				B761071D22136DDD001F79B6 /* Task + Convenience.swift */,
-				B7BA6EF621F7D4D6004A3C70 /* TaskListTableViewController.swift */,
-				B73804E8221F729500CD9E59 /* SwitchTableViewCell.swift */,
-				B7BA6EF821F7D502004A3C70 /* TaskDetailTableViewController.swift */,
-				B73804E6221DCC8D00CD9E59 /* TaskController.swift */,
-				B7BA6EE521F7A442004A3C70 /* Main.storyboard */,
-				B7BA6EEB21F7A446004A3C70 /* Assets.xcassets */,
-				B7BA6EED21F7A446004A3C70 /* LaunchScreen.storyboard */,
-				B7BA6EF021F7A446004A3C70 /* Info.plist */,
-				B7BA6EE821F7A442004A3C70 /* Task.xcdatamodeld */,
+				B73804EA22248AB600CD9E59 /* Model */,
+				B73804EB22248AC200CD9E59 /* Controllers */,
+				B73804EE22248B2900CD9E59 /* Views */,
+				B73804EF22248B4900CD9E59 /* Resources */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -308,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W53Z73CT67;
-				INFOPLIST_FILE = Task/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Task/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W53Z73CT67;
-				INFOPLIST_FILE = Task/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Task/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
