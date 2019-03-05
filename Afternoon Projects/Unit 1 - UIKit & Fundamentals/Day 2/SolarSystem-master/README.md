@@ -4,19 +4,19 @@ Students will work with tableviews, learn about computed properties, and impleme
 Students who complete this project independently are able to:
 
 ---
-* Instantiate a UItableViewControler
+* Instantiate a UITableViewControler
 * Work with UITableVIewControllers
 * Implement a master-detail interface
 * Instantiate and place UIImages on the screen
 * Use a Model Object Controller to access Model Objects
-* Use computed Properties
+* Use computed properties
 
 ## Guide
 
 ---
 
 ## Model
-Create your Planet Model class that will hold the Name, ImageName, Diameter, Day-length, and MaxMillionKMsFromSun.
+Create your Planet Model class that will hold the name, imageName, diameter, dayLength, and maxMillionKMsFromSun.
 
 1. Add a new `Planet.swift` file and define a new `Planet` class.
 2. Add your properties choosing the data types carefully. Day length, and maxMillionKMsFromSun will have a decimal point and Diameter will not. 
@@ -40,11 +40,11 @@ Create your PlanetController class that will hold your planets array. `planets` 
 - let neptune = Planet(planetName: “Neptune”, planetImageName: “neptune”, planetDiameter: 49528, planetDayLength: 16.1, maxMillionKMsFromSun: 4495.1)
 - let pluto = Planet(planetName: “Pluto”, planetImageName: “pluto”, planetDiameter: 2370, planetDayLength: 153.3, maxMillionKMsFromSun: 5906.4)
 
-4. Return an array of the planet objects you just created
-5. Set your `planets` to be static so we can access them with an instance of our `Planet Controller`
+4. Return the array of the planet objects you just created
+5. Set your `planets` to be static so we can access them without an instance of our `Planet Controller`
 
 ---
-## Master List View
+## PlanetListTableViewController
 Build a view that lists the planets using a `UITableViewController` scene. Implement the `UITableViewDataSource` protocol methods (refer to the [documentation](https://developer.apple.com/documentation/uikit/uitableviewdatasource) for a refresher if needed). Note that one could use a `UIViewController` with a `UITableView` placed on it, but `UITableViewController` implements a full screen `UITableView` by default.
 
 <details>
@@ -77,23 +77,23 @@ note: Experiment with Autolayout automatic constraints or UIStackViews to create
 4. Create outlets from the UIImageView and UILabels to your PlanetDetailViewController class
 If Xcode won’t let you create the outlets:
 Make sure that you’ve correctly set the class of the detail view scene from the last step.
-5. Add an optional planet property (of type Planet) that will be set by the Master List View when performing the segue
+5. Add an optional planet property (of type Planet) that will be set by the `PlanetListTableViewController` when performing the segue
 6. Add a new function called updateViews that makes sure a planet was successfully passed to the PlanetDetailViewController’s planet property made in step 5 by unwrapping it, then updates the view controller’s title, UIImageView and UILabels with the planet’s data
 note: This is an extremely common design pattern. Commit it to memory. If you have a detail view or table view cell template that displays data, use an ‘updateViews’ method takes the model data passed from the previous view controller’s prepareForSegue function, and updates the view’s subviews with it.
 7. Update the viewDidLoad() function to call the updateViews function.
-You can test your view and the update function by setting the detail view as the initial view controller, then in the viewDidLoad, assign self.planet to PlanetController.planets[0], before calling updateViews Be sure to reverse those changes when done checking that the view works, or you may have undesired behavior as you create your segue, though make sure to leave the updateViews function in the viewDidLoad.
+You can test your view and the update function by setting the detail view as the initial view controller, then in the viewDidLoad, assign `self.planet` to `PlanetController.planets[0]`, before calling updateViews Be sure to reverse those changes when done checking that the view works, or you may have undesired behavior as you create your segue, though make sure to leave the updateViews function in the viewDidLoad.
 
 ---
 ## Segue
 Create a segue between your List View and Detail View that will pass the selected planet to the detail view for display.
 
 Step by step process:
-1. Option-drag from your prototype cell in the List View to the Detail View to create a “show” segue.
+1. Option-drag from your prototype cell in the List View Scene to the Detail View to create a “show” segue.
 2. Select the segue and give it an identifier
 note: As a matter of best practice, the identifier should describe what the segue does, for example `toPlanetDetail`
 3. Add the prepareForSegue function to your PlanetListViewController class
 note: Remember that prepareForSegue will get called on all segues triggered from the current scene and accompanying view controller class
-4. Implement the `prepareForSegue method` by checking for the correct segue identifier, capturing an instance of the selected planet, capturing an instance of the PlanetDetailViewController, and setting the planet property of the PlanetDetailViewController 
+4. Implement the `prepareForSegue method` by checking for the correct segue identifier, capturing an instance of the selected planet, capturing an instance of the `PlanetDetailViewController`, and setting the planet property of the PlanetDetailViewController 
 Hint: Remember, the `PlanetDetailViewController` will use the `planet` property to update itself when it loads to display to the user
 
 Hint:  
@@ -126,11 +126,8 @@ Hint:
 
 ---
 ## Black Diamonds 💎 
- Add additional model data to the Planet class, update the PlanetController to include it, and update the PlanetDetailViewController to display it
-
+* Add additional model data to the Planet class, update the PlanetController to include it, and update the PlanetDetailViewController to display it
 * Add an image of the entire Solar System as a header view to the list UITableView
-* Create a Unit or UITest that verifies the number of cells in the PlanetListViewController
-* Create a Unit or UITest that verifies the values of PlanetController.planets
 
 ## Contributions
 
