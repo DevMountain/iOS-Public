@@ -19,7 +19,12 @@ class TaskDetailTableViewController: UITableViewController {
     
     // MARK: - Constants & Variables
 
-    var task: Task?
+    var task: Task? {
+        didSet {
+            loadViewIfNeeded()
+            updateViews()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +32,7 @@ class TaskDetailTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+
         // Unwrap the name text field and ensure that the string is not empty
         guard let name = nameTextField.text,
             !name.isEmpty
@@ -38,7 +43,6 @@ class TaskDetailTableViewController: UITableViewController {
             
             // Update the task
             TaskController.shared.update(task, name: name, notes: notesTextView.text, due: datePicker.date)
-            
         } else {
             
             // Create a new task
@@ -51,5 +55,12 @@ class TaskDetailTableViewController: UITableViewController {
     
     @IBAction func datePickerChaged(_ sender: UIDatePicker) {
         dueTextField.text = "\(sender.date)"
+    }
+    
+    func updateViews() {
+        guard let task = task else { return }
+        nameTextField.text = task.name
+        dueTextField.text = task.due != nil ? String(describing: task.due!) : ""
+        
     }
 }

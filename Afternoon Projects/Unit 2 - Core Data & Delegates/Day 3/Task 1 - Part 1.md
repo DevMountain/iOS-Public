@@ -237,7 +237,14 @@ return cell
 ```
 
 ###### Passing data
-Let's handle when a user taps on an existing task. First, go into your `Main.storyboard` file and give an identifier to the segue from your cell to the TaskDetailViewController; it should be something to the effect of "toTaskDetail." Next, in your `TaskListTableViewController.swift` file, uncomment the `prepareForSegue` function.  Check that the segue's identifier matches the one that you just set in storyboard; if it matches, unwrap the segue's destination view controller and the table view's selected index path. Add an optional `Task` landing pad on your `TaskDetailViewController`. Index the `tasks` array on your `TaskController` and pass the correct `Task` object to your detail view controller. 
+Let's handle when a user taps on an existing task. Add an optional 'landing pad' of type `Task` to your `TaskDetailTableViewController` file.
+ 
+```
+// Landing pad
+var task: Task?
+```
+
+Now that we have provided a place for our task to land, go into your `Main.storyboard` file and give an identifier to the segue from your cell to the `TaskDetailViewController`; it should be something to the effect of "toTaskDetail." Next, in your `TaskListTableViewController.swift` file, uncomment the `prepareForSegue` function. Check that the segue's identifier matches the one that you just set in storyboard; if it matches, unwrap the segue's destination view controller and the table view's selected index path. Index the `tasks` array on your `TaskController` and pass the correct `Task` object to the landing pad on your detail view controller. 
 
 ```
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -295,9 +302,13 @@ Let's jump back into our storyboard and put the finishing touches on the detail 
 ###### TaskDetailTableViewController.swift
 
 1. Drag outlets from your storyboard's view controller into your swift file. Make sure you include an outlet for the date picker.
-2. Drag out an `IBAction` for your `saveBarButtonItem`.
-3. In `viewDidLoad`, assign the `dueTextField's` `inputView` to your date picker.
-4. In your `saveButtonTapped` function, safely unwrap the `nameTextField's` text and either a) create a new instance of `Task`, or b) update an existing task. Remember that `due` and `notes` are both optional. Also note that the data for `due` should come from your date picker, not the `dueTextField` itself. Finally, pop the view controller off the navigation stack. This should happen regardless of whether an update or creation is occuring.
+2. Add an `updateViews` function to your class that 1) unwraps your `Task` landing pad and 2) updates all of the UI elements on task detail view using the unwrapped landing pad's properties. Add a `didSet` to your `Task` landing pad and call both `loadViewIfNeeded` and `updateViews` in that order. `loadViewIfNeeded` loads the view if it hasn't already been loaded; if this function is not called, your app will crash when you get to the detail view.
+
+Next, let's tackle saving/updating. 
+
+1. Drag out an `IBAction` for your `saveBarButtonItem`.
+2. In `viewDidLoad`, assign the `dueTextField's` `inputView` to your date picker.
+3. In your `saveButtonTapped` function, safely unwrap the `nameTextField's` text and either a) create a new instance of `Task`, or b) update an existing task. Remember that `due` and `notes` are both optional. Also note that the data for `due` should come from your date picker, not the `dueTextField` itself. Finally, pop the view controller off the navigation stack. This should happen regardless of whether an update or creation is occuring.
 
 ```
 // Unwrap the name text field and ensure that the string is not empty

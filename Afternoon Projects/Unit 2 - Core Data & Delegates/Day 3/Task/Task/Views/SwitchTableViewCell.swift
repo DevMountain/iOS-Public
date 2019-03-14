@@ -19,6 +19,9 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var isCompleteButton: UIButton!
+    
+    // MARK: - Constants & Variables
+    
     var task: Task? {
         didSet {
             updateViews()
@@ -35,14 +38,11 @@ class SwitchTableViewCell: UITableViewCell {
 
 extension SwitchTableViewCell {
     
-    public func updateViews() {
+    func updateViews() {
+        
         guard let task = task else { return }
         nameLabel.text = task.name
-        if let due = task.due {
-            dueLabel.text = String(describing: due)
-        } else {
-            dueLabel.isHidden = true
-        }
+        task.due != nil ? (dueLabel.text = String(describing: task.due!)) : (dueLabel.isHidden = true)
         
         let image: UIImage? = task.isComplete ? UIImage(named: "complete") : UIImage(named: "incomplete")
         isCompleteButton.setBackgroundImage(image, for: .normal)
