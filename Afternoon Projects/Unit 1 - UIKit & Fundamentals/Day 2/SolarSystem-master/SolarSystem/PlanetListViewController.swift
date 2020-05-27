@@ -11,10 +11,8 @@ import UIKit
 class PlanetListViewController: UITableViewController {
 
     // MARK: - UITableViewDataSource/Delegate
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return PlanetController.planets.count
+        PlanetController.planets.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,7 +30,6 @@ class PlanetListViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toPlanetDetail" {

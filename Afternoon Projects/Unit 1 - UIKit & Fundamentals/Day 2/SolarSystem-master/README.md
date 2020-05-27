@@ -74,9 +74,7 @@ Hint:
 In the Main.storyboard, click the yellow circle above the new UIViewController scene, then select the Identity Inspector (the third icon from the right) on the top right of the window. In the text field that says “Class:”, type the name of the new `UIViewController` subclass you just made in the previous step (`PlanetDetailViewController`)
 3. Add a UIImageView and UILabels to display the data
 note: Experiment with Autolayout automatic constraints or UIStackViews to create an appealing detail view
-4. Create outlets from the UIImageView and UILabels to your PlanetDetailViewController class
-If Xcode won’t let you create the outlets:
-Make sure that you’ve correctly set the class of the detail view scene from the last step.
+4. Create outlets from the UIImageView and UILabels to your PlanetDetailViewController class(Note: If Xcode won’t let you create the outlets make sure that you’ve correctly set the class of the detail view scene from the last step.)
 5. Add an optional planet property (of type Planet) that will be set by the Master List View when performing the segue
 6. Add a new function called updateViews that makes sure a planet was successfully passed to the PlanetDetailViewController’s planet property made in step 5 by unwrapping it, then updates the view controller’s title, UIImageView and UILabels with the planet’s data
 note: This is an extremely common design pattern. Commit it to memory. If you have a detail view or table view cell template that displays data, use an ‘updateViews’ method takes the model data passed from the previous view controller’s prepareForSegue function, and updates the view’s subviews with it.
